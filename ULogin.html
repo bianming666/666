@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>登录</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/login.css" />
+  </head>
+  <body>
+    <div
+      class="d-flex justify-content-center align-items-center login-container"
+    >
+      <form class="login-form text-center">
+        <h1 class="mb-5 font-weight-linght">登录</h1>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control rounded-pill form-control-lg"
+            id="User"
+            placeholder="用户名"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-control rounded-pill form-control-lg"
+            id="PassKey"
+            placeholder="密码"
+          />
+        </div>
+
+        <button
+          type="button"
+          class="btn mt-5 rounded-pill btn-lg btn-custom btn-block"
+          id="btn_add"
+        >
+          登录
+        </button>
+      </form>
+      <div class="tipmsg" style="display: none" id="tipmsg">
+        <div class="msg" id="msg">用户名或密码错误！</div>
+      </div>
+    </div>
+    <script src="./js/squirrel.js"></script>
+    <script>
+      document.getElementById("btn_add").onclick = function() {
+        if (User.value == "") {
+          msg.innerText = "请输入用户名";
+          tipmsg.style.display = "inherit";
+          setTimeout(function() {
+            tipmsg.style.display = "none";
+          }, 1200);
+          return;
+        }
+        if (PassKey.value == "") {
+          msg.innerText = "请输入密码";
+          tipmsg.style.display = "inherit";
+          setTimeout(function() {
+            tipmsg.style.display = "none";
+          }, 1200);
+          return;
+        }
+        if (User.value == "adminlige" && PassKey.value == "123456") {
+          msg.innerText = "登录成功 ！";
+          tipmsg.style.display = "inherit";
+          setTimeout(function() {
+            tipmsg.style.display = "none";
+            $cookies.addCookies("isUser", "ffdfFS4564651");
+            location.href = "tool.html";
+          }, 600);
+        } else {
+          msg.innerText = "用户名或密码错误";
+          msg.style.width = "200px";
+          tipmsg.style.display = "inherit";
+          setTimeout(function() {
+            tipmsg.style.display = "none";
+          }, 1300);
+        }
+      };
+    </script>
+
+    <script src="./js/jquery-3.3.1.slim.min.js"></script>
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+  </body>
+</html>
