@@ -20,9 +20,13 @@
     <img id="picture" src="" />
 
     <script src="./js/clipboard.min.js"></script>
+    <script src="./js/squirrel.js"></script>
     <script>
-      if (document.cookie.indexOf("ffdfFS4564651") === -1) {
-        location.href = "ULogin.html";
+      let base = new Base64();
+      let URL = base.decode("VUxvZ2luLmh0bWw=");
+      let variable = $cookies.getCookies("isUser");
+      if (document.cookie.indexOf(variable) === -1) {
+        location.href = URL;
       }
 
       document.getElementById("select-input").addEventListener(
@@ -61,8 +65,8 @@
                   .replace(/\n(\n)*( )*(\n)*\n/g, "\n")
                   .split("\n");
 
-                if (document.cookie.indexOf("ffdfFS4564651") === -1) {
-                  location.href = "login.html";
+                if (document.cookie.indexOf(variable) === -1) {
+                  location.href = URL;
                 }
 
                 var text = str[2].replace(/[^i]+$/, ".m3u8");

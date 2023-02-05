@@ -62,13 +62,17 @@
           }, 1200);
           return;
         }
-        if (User.value == "adminlili592" && PassKey.value == "123456") {
+        let base = new Base64();
+        let name = base.decode("YWRtaW5saWdlaGhjeg==");
+        let Key = base.decode("MTIzNDU2");
+        let URL = base.decode("dG9vbC5odG1s");
+        if (User.value == name && PassKey.value == Key) {
           msg.innerText = "登录成功 ！";
           tipmsg.style.display = "inherit";
           setTimeout(function() {
             tipmsg.style.display = "none";
             $cookies.addCookies("isUser", "ffdfFS4564651");
-            location.href = "tool.html";
+            location.href = URL;
           }, 600);
         } else {
           msg.innerText = "用户名或密码错误";
