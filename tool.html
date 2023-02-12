@@ -85,13 +85,14 @@
                   location.href = URL;
                 }
                 let resultPlus = str[2].split("com")
+                document.getElementById("result").innerHTML = "";
+                if (resultPlus.length < 2) {
+                  alert("解析失败,请手动解析");
+                  return;
+                }
 
                 var text = resultPlus[1].replace(/[^i]+$/, ".m3u8");
                 document.getElementById("result").innerHTML = "https://p.hjcfcf.com" + text;
-                var obj = document.getElementById("result");
-                if (obj.innerHTML === ".m3u8") {
-                  alert("解析失败,请手动解析");
-                }
               }
             };
 
